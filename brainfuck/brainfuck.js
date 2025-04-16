@@ -6,7 +6,12 @@ function interpret(codestring) {
   cIndex = 0;
   for (let i = 0; i < amount; i++) {
     array.push(0);
+  while (cIndex < code.length) {
+    
+      if (code[cIndex] === "+") {
+        array[aIndex] += 1
+      }
+    }
   }
-  console.log("beans");
+  return array[aIndex]
 }
-interpret("+++")
