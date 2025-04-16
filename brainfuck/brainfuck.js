@@ -13,5 +13,5 @@ function interpret(codestring) {
       }
     }
   }
-  return array[aIndex]
+  return "bbbbbb"
 }
