@@ -1,3 +1,66 @@
+
+function IndexBrackets(code) {
+  cIndex = 0;
+  out = [];
+  indexCounter = 0;
+  for (let i = 0; i < code.length; i++) {
+    out.push("balls");
+  }
+  while (cIndex < code.length) {
+    if (code[cIndex] === "[") {
+      out[cIndex] = indexCounter;
+      indexCounter += 1;
+    }
+    if (code[cIndex] === "]") {
+      indexCounter += -1;
+      out[cIndex] = indexCounter;
+    }
+
+    cIndex += 1;
+  }
+
+  return out;
+}
+
+function getPartner(code,a) {
+    target = IndexBrackets(code)[a];
+
+  if (code[a] != "[") {
+    if (code[a] != "]") {
+      return a
+    }
+  }
+
+  if (code[a] === "[") {
+    for (let i = 0; i < code.length - a; i++) {
+      if (code[a + i] === "]") {
+        if (IndexBrackets(code)[a + i] == target) {
+          return (a + i);
+        }
+      }
+    }
+  }
+
+  if (code[a] === "]") {
+    for (let i = 0; i < a; i++) {
+      if (code[a - i] === "[") {
+        if (IndexBrackets(code)[a - i] === target) {
+          return (a - i);
+        }
+      }
+    }
+  }
+}
+
+function fun(codestring) {
+  code = Array.from(codestring)
+  output = []
+  for (i = 0; i < code.length; i++) {
+    output.push(getPartner(code, i))
+  }
+  return output
+}
+
 function interpret(codestring) {
   code = Array.from(codestring);
   array = [];
@@ -25,21 +88,13 @@ function interpret(codestring) {
 
       if (code[cIndex] === "[") {
         if (array[aIndex] === 0) {
-          for (let n = 0; n < code.length - cIndex - 1; n++) {
-            if (code[cIndex + n] === "]") {
-              cIndex += n + 1
-            }
-          }
+          cIndex = getPartner(code, cIndex)
         }
       }
 
       if (code[cIndex] === "]") {
         if (array[aIndex] != 0) {
-          for (let n = 0; n < cIndex; n++) {
-            if (code[n] === "[") {
-              cIndex = n;
-            }
-          }
+          cIndex = getPartner(code, cIndex)
         }
       }
       

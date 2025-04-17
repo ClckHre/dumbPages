@@ -13,22 +13,13 @@
       }
     </style>
     <script src='brainfuck.js'></script>
-    <script>
-      function ensureLength(a,minlength) {
-        spaces = []
-        if (Array.from(a).length < minlength)
-          for (let i = 0; i < MinLength - Array.from(a).length; i++) {
-            spaces.push(" ")
-          }
-          return spaces.join("")
-      }
-    </script>
+
   </head>
   
   <body>
     <label for="input">Input</label>
     <br>
-    <textarea id="input" name="input" rows="8" cols="30">++[>++<-]>[>++<-]>[>++<-]>[>++<-]>++.</textarea>
+    <textarea id="input" name="input" rows="8" cols="30"></textarea>
     <br>
     <br>
     <button type="button" onclick='document.getElementById("output").innerHTML = interpret(document.getElementById("input").value)'>INTERPRET</button>
