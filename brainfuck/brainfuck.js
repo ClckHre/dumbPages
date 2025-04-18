@@ -52,15 +52,6 @@ function getPartner(code,a) {
   }
 }
 
-function fun(codestring) {
-  code = Array.from(codestring)
-  output = []
-  for (i = 0; i < code.length; i++) {
-    output.push(getPartner(code, i))
-  }
-  return output
-}
-
 function interpret(codestring) {
   code = Array.from(codestring);
   array = [];
@@ -99,7 +90,7 @@ function interpret(codestring) {
       }
       
       if (code[cIndex] === ".") {
-        output.push(array[aIndex]);
+        output.push(String.fromCharCode(array[aIndex]));
       }
 
       if (aIndex < 0) {
@@ -119,5 +110,7 @@ function interpret(codestring) {
       cIndex += 1
     }
 
-  return output
+    return output.join("")
   }
+
+
