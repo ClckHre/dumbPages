@@ -4,7 +4,7 @@ function IndexBrackets(code) {
   out = [];
   indexCounter = 0;
   for (let i = 0; i < code.length; i++) {
-    out.push("balls");
+    out.push("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
   }
   while (cIndex < code.length) {
     if (code[cIndex] === "[") {
